@@ -2,8 +2,8 @@ package stringutil
 
 import (
 	"fmt"
-	. "github.com/bborbe/assert"
 	"testing"
+	. "github.com/bborbe/assert"
 )
 
 type TestStringAfterData struct {
