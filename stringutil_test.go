@@ -3,6 +3,7 @@ package stringutil
 import (
 	"fmt"
 	"testing"
+	"sort"
 	. "github.com/bborbe/assert"
 )
 
@@ -43,7 +44,7 @@ var TestStringAfterDatas = []TestStringAfterData{
 func TestStringAfter(t *testing.T) {
 	for i, testdata := range TestStringAfterDatas {
 		result := StringAfter(testdata.Content, testdata.Find)
-		err := AssertThat(result, Is(testdata.Result).Message(fmt.Sprintf("result wrong in testcase %d!", i+1)))
+		err := AssertThat(result, Is(testdata.Result).Message(fmt.Sprintf("result wrong in testcase %d!", i + 1)))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -92,7 +93,7 @@ var TestStringBeforeDatas = []TestStringBeforeData{
 func TestStringBefore(t *testing.T) {
 	for i, testdata := range TestStringBeforeDatas {
 		result := StringBefore(testdata.Content, testdata.Find)
-		err := AssertThat(result, Is(testdata.Result).Message(fmt.Sprintf("result wrong in testcase %d!", i+1)))
+		err := AssertThat(result, Is(testdata.Result).Message(fmt.Sprintf("result wrong in testcase %d!", i + 1)))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -134,9 +135,71 @@ var TestTrimDatas = []TestTrimData{
 func TestTrim(t *testing.T) {
 	for i, testdata := range TestTrimDatas {
 		result := Trim(testdata.Input)
-		err := AssertThat(result, Is(testdata.Expected).Message(fmt.Sprintf("result wrong in testcase %d!", i+1)))
+		err := AssertThat(result, Is(testdata.Expected).Message(fmt.Sprintf("result wrong in testcase %d!", i + 1)))
 		if err != nil {
 			t.Fatal(err)
 		}
+	}
+}
+
+func TestStringSort(t *testing.T) {
+	var err error
+	names := []string{"aa", "a", "aaa"}
+	sort.Strings(names)
+	err = AssertThat(names[0], Is("a"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = AssertThat(names[1], Is("aa"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = AssertThat(names[2], Is("aaa"))
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestStringLess(t *testing.T) {
+	var err error
+	err = AssertThat(StringLess("-", "-"), Is(false))
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = AssertThat(StringLess("7", "8"), Is(true))
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = AssertThat(StringLess("0", "8"), Is(true))
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = AssertThat(StringLess("a", "b"), Is(true))
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = AssertThat(StringLess("b", "a"), Is(false))
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = AssertThat(StringLess("a", "a"), Is(false))
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = AssertThat(StringLess("a", "aa"), Is(true))
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = AssertThat(StringLess("aa", "a"), Is(false))
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = AssertThat(StringLess("2013-07-29T10:20:15", "2013-08-23T07:45:48"), Is(true))
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = AssertThat(StringLess("2013-08-23T07:45:48", "2013-07-29T10:20:15"), Is(false))
+	if err != nil {
+		t.Fatal(err)
 	}
 }

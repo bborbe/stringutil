@@ -12,7 +12,7 @@ func StringAfter(content string, find string) string {
 	if pos == -1 {
 		return ""
 	}
-	return content[pos+len(find):]
+	return content[pos + len(find):]
 }
 
 func StringBefore(content string, find string) string {
@@ -32,8 +32,8 @@ func Trim(content string) string {
 		if trimableChar(runes[0]) {
 			return Trim(content[1:])
 		}
-		if trimableChar(runes[len(content)-1]) {
-			return Trim(content[:len(content)-1])
+		if trimableChar(runes[len(content) - 1]) {
+			return Trim(content[:len(content) - 1])
 		}
 	}
 	return content
@@ -41,4 +41,16 @@ func Trim(content string) string {
 
 func trimableChar(c rune) bool {
 	return c == ' ' || c == '\n' || c == '\r'
+}
+
+func StringLess(a, b string) bool {
+	for i := 0; i < len(a) && i < len(b); i++ {
+		if a[i] < b[i] {
+			return true
+		}
+		if a[i] > b[i] {
+			return false
+		}
+	}
+	return len(a) < len(b)
 }
