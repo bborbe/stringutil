@@ -2,8 +2,8 @@ package stringutil
 
 import (
 	"fmt"
-	"testing"
 	"sort"
+	"testing"
 	. "github.com/bborbe/assert"
 )
 
@@ -44,7 +44,7 @@ var TestStringAfterDatas = []TestStringAfterData{
 func TestStringAfter(t *testing.T) {
 	for i, testdata := range TestStringAfterDatas {
 		result := StringAfter(testdata.Content, testdata.Find)
-		err := AssertThat(result, Is(testdata.Result).Message(fmt.Sprintf("result wrong in testcase %d!", i + 1)))
+		err := AssertThat(result, Is(testdata.Result).Message(fmt.Sprintf("result wrong in testcase %d!", i+1)))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -93,7 +93,7 @@ var TestStringBeforeDatas = []TestStringBeforeData{
 func TestStringBefore(t *testing.T) {
 	for i, testdata := range TestStringBeforeDatas {
 		result := StringBefore(testdata.Content, testdata.Find)
-		err := AssertThat(result, Is(testdata.Result).Message(fmt.Sprintf("result wrong in testcase %d!", i + 1)))
+		err := AssertThat(result, Is(testdata.Result).Message(fmt.Sprintf("result wrong in testcase %d!", i+1)))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -135,7 +135,7 @@ var TestTrimDatas = []TestTrimData{
 func TestTrim(t *testing.T) {
 	for i, testdata := range TestTrimDatas {
 		result := Trim(testdata.Input)
-		err := AssertThat(result, Is(testdata.Expected).Message(fmt.Sprintf("result wrong in testcase %d!", i + 1)))
+		err := AssertThat(result, Is(testdata.Expected).Message(fmt.Sprintf("result wrong in testcase %d!", i+1)))
 		if err != nil {
 			t.Fatal(err)
 		}
