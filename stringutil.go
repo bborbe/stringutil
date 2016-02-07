@@ -1,4 +1,4 @@
-package Stringutil
+package stringutil
 
 import (
 	"strings"
