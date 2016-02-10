@@ -1,6 +1,4 @@
-# stringutil
-
-Go Stringutils
+# Stringutil
 
 ## Documentation
 
