@@ -1,9 +1,5 @@
 # Stringutil
 
-## Documentation
-
-http://godoc.org/github.com/bborbe/stringutil
-
 ## Continuous integration
 
 http://jenkins.benjamin-borbe.de/job/Go-Stringutil/
