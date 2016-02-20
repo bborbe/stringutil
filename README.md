@@ -2,7 +2,7 @@
 
 ## Continuous integration
 
-http://jenkins.benjamin-borbe.de/job/Go-Stringutil/
+[Jenkins](https://www.benjamin-borbe.de/jenkins/job/Go-Stringutil/)
 
 ## Copyright and license
 
