@@ -1,29 +1,46 @@
 package stringutil
 
 import (
+	"fmt"
 	"strings"
 )
 
 func StringAfter(content string, find string) string {
+	match, err := StringAfterError(content, find)
+	if err != nil {
+		return ""
+	}
+	return match
+}
+
+func StringAfterError(content string, find string) (string, error) {
 	if len(find) == 0 {
-		return content
+		return content, nil
 	}
 	pos := strings.Index(content, find)
 	if pos == -1 {
-		return ""
+		return "", fmt.Errorf("can't find '%s' in content")
 	}
-	return content[pos+len(find):]
+	return content[pos+len(find):], nil
 }
 
 func StringBefore(content string, find string) string {
+	match, err := StringBeforeError(content, find)
+	if err != nil {
+		return ""
+	}
+	return match
+}
+
+func StringBeforeError(content string, find string) (string, error) {
 	if len(find) == 0 {
-		return content
+		return content, nil
 	}
 	pos := strings.Index(content, find)
 	if pos == -1 {
-		return ""
+		return "", fmt.Errorf("can't find '%s' in content")
 	}
-	return content[:pos]
+	return content[:pos], nil
 }
 
 func Trim(content string) string {
