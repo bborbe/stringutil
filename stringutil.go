@@ -19,7 +19,7 @@ func StringAfterError(content string, find string) (string, error) {
 	}
 	pos := strings.Index(content, find)
 	if pos == -1 {
-		return "", fmt.Errorf("can't find '%s' in content")
+		return "", fmt.Errorf("can't find '%s' in content", find)
 	}
 	return content[pos+len(find):], nil
 }
@@ -38,7 +38,7 @@ func StringBeforeError(content string, find string) (string, error) {
 	}
 	pos := strings.Index(content, find)
 	if pos == -1 {
-		return "", fmt.Errorf("can't find '%s' in content")
+		return "", fmt.Errorf("can't find '%s' in content", find)
 	}
 	return content[:pos], nil
 }
